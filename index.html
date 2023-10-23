@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+     
+	<title>Descuento</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco transparente */
+			background-image: url('https://static.wixstatic.com/media/8d4bfe_92a2886a9260408e8f22151008c8c788~mv2.gif'); /* Gif de fondo */
+			background-size: cover;
+		}
+		form {
+			background-color: white;
+			padding: 20px;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+   <!-- Contenedor del icono del menú y su contorno blanco transparente -->
+   <div class="menu-container">
+    <!-- Icono del menú -->
+    <div class="menu-icon">
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+    </div>
+</div>
+
+<!-- Menú desplegable -->
+<div class="menu">
+<ul>
+    <li><a href="https://victordaniel123.github.io/menu/">Inicio</a></li>
+    <li><a href="https://victordaniel123.github.io/pagina_victor/">finalizar sesion</a></li>
+</ul>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+<form>
+	<label for="articulosComprar">Artículo:</label>
+	<input type="text" id="articulosComprar" name="articulosComprar"><br><br>
+
+	<label for="articulos">Cantidad:</label>
+	<input type="number" id="articulos" name="articulos"><br><br>
+
+	<button type="button" onclick="calcularDescuento()">Calcular Descuento</button><br><br>
+
+	<label for="precioSinDescuento">Precio sin Descuento:</label>
+	<span id="precioSinDescuento"></span><br><br>
+
+	<label for="descuento">Descuento:</label>
+	<span id="descuento"></span><br><br>
+
+	<label for="precioConDescuento">Precio con Descuento:</label>
+    <span id="precioConDescuento"></span><br><br>
+    <label for="precioConDescuento">NOTA: tienes que tener mas de 20 articulos para tener el 20% de descuento</label>
+</form>
+
+<script type="text/javascript">
+	function calcularDescuento() {
+		var articulosComprar = document.getElementById("articulosComprar").value;
+		var articulos = parseInt(document.getElementById("articulos").value);
+		var Descuento = 20; 
+		var PrecioUnitario = 100;
+		var PrecioSinDesceunto = articulos * PrecioUnitario;
+		var CantidadMinimaDescuento = 10;
+		var subtotal = PrecioUnitario * articulos;
+
+		if (articulos >= CantidadMinimaDescuento) {
+			Descuento = 20;
+			subtotal = subtotal - (subtotal * (Descuento / 100));
+		}
+
+		document.getElementById("precioSinDescuento").textContent = "$" + PrecioSinDesceunto;
+		document.getElementById("descuento").textContent = Descuento + "%";
+		document.getElementById("precioConDescuento").textContent = "$" + subtotal;
+	}
+</script>
+
+
+</body>
+</html>
